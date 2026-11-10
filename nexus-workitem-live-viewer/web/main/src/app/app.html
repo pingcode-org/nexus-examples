@@ -1,0 +1,18 @@
+@if (isDisplay()) {
+  <main class="viewers">
+    @if (error()) {
+      <p class="viewers-status viewers-status-error" role="alert">{{ error() }}</p>
+    } @else if (viewers().length > 0) {
+      <thy-avatar-list class="viewers-list" [thyAvatarSize]="avatarSize">
+        @for (person of viewers(); track person.userId) {
+          <thy-avatar
+            [thySize]="avatarSize"
+            [thyName]="person.displayName"
+            [thyShowName]="false"
+            [thySrc]="person.avatarUrl"
+          />
+        }
+      </thy-avatar-list>
+    }
+  </main>
+}
