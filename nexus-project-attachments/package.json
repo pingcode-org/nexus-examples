@@ -1,0 +1,31 @@
+{
+  "name": "nexus-project-attachments",
+  "version": "1.0.0",
+  "description": "Nexus Project Attachments (项目附件) example app — NOS + CES",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build-web": "cd web/main && npm run build",
+    "start-web": "cd web/main && npm run start",
+    "serve": "nexus serve --environment development",
+    "start": "concurrently \"npm run start-web\" \"npm run serve\"",
+    "deploy-only": "nexus deploy",
+    "deploy": "npm run build-web && nexus deploy",
+    "postinstall": "cd web/main && npm install"
+  },
+  "devDependencies": {
+    "@pc-nexus/cli": "0.8.0",
+    "@types/node": "^24.10.1",
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@pc-nexus/core": "^0.8.0",
+    "@pc-nexus/manifest": "^0.8.0",
+    "@pc-nexus/network": "^0.8.0",
+    "@pc-nexus/storage": "^0.8.0"
+  }
+}
