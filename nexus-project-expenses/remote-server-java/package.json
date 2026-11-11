@@ -1,0 +1,7 @@
+{
+  "name": "nexus-project-expenses-remote-java",
+  "private": true,
+  "scripts": {
+    "start": "./mvnw -B --no-transfer-progress package && java -jar target/remote-server-java-1.0.0.jar"
+  }
+}
