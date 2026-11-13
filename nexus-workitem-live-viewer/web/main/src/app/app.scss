@@ -1,0 +1,27 @@
+.viewers {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  line-height: 0;
+}
+
+.viewers-status {
+  margin: 0;
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  line-height: 24px;
+}
+
+.viewers-status-error {
+  color: var(--danger);
+}
+
+.viewers-list {
+  // Library default is width:100% + flex:1; keep the row content-sized.
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
