@@ -1,0 +1,78 @@
+<section class="pg-section">
+  <h3 class="pg-section-title">Open Dialog</h3>
+  <div class="picker">
+    <div class="members-wrap">
+      <thy-avatar-list class="members" thyAvatarSize="32">
+        @for (person of dialogMultiple(); track person.id) {
+          <thy-avatar
+            [thySrc]="person.avatar"
+            [thyName]="label(person)"
+            [thyShowName]="false"
+            thyRemovable
+            (thyRemove)="removeDialogMultiple(person.id)"
+          />
+        }
+      </thy-avatar-list>
+      <button
+        class="add"
+        thyButton="default"
+        thyAppearance="outline"
+        thyIcon="plus"
+        type="button"
+        (click)="openDialogMultiple()"
+      ></button>
+    </div>
+  </div>
+</section>
+<thy-divider class="pg-divider"></thy-divider>
+<section class="pg-section">
+  <h3 class="pg-section-title">Open Popover</h3>
+  <div class="picker">
+    <span class="picker-mode">单选</span>
+    <div class="members-wrap">
+      @if (popoverSingle(); as person) {
+        <thy-avatar
+          thySize="32"
+          [thySrc]="person.avatar"
+          [thyName]="label(person)"
+          [thyShowName]="true"
+          thyRemovable
+          (thyRemove)="removePopoverSingle()"
+        />
+      } @else {
+        <button
+          class="add"
+          thyButton="default"
+          thyAppearance="outline"
+          thyIcon="plus"
+          type="button"
+          (click)="openPopoverSingle($event)"
+        ></button>
+      }
+    </div>
+  </div>
+  <div class="picker">
+    <span class="picker-mode">多选</span>
+    <div class="members-wrap">
+      <thy-avatar-list class="members" thyAvatarSize="32">
+        @for (person of popoverMultiple(); track person.id) {
+          <thy-avatar
+            [thySrc]="person.avatar"
+            [thyName]="label(person)"
+            [thyShowName]="false"
+            thyRemovable
+            (thyRemove)="removePopoverMultiple(person.id)"
+          />
+        }
+      </thy-avatar-list>
+      <button
+        class="add"
+        thyButton="default"
+        thyAppearance="outline"
+        thyIcon="plus"
+        type="button"
+        (click)="openPopoverMultiple($event)"
+      ></button>
+    </div>
+  </div>
+</section>

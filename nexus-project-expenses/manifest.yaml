@@ -1,0 +1,87 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+  publisher:
+    name: PingCode 团队
+    email: support@pingcode.com
+    phone: 400-805-1024
+    site: https://pingcode.com
+  links:
+    - title: 服务条款
+      url: https://pingcode.com/terms
+    - title: 隐私政策
+      url: https://pingcode.com/privacy
+extensions:
+  - key: expenses-remote
+    resource: main
+    target: pcm:pjm:project:page
+    resolver:
+      # 项目页的 Resolver 绑定费用端点。
+      endpoint: expenses-endpoint
+    title: 项目经费（远程端点）
+    route: expenses-remote
+  - key: expenses-function
+    resource: main
+    target: pcm:pjm:project:page
+    resolver:
+      # 只读查询页的 Resolver 绑定 Nexus 函数。
+      function: expenses-resolver
+    title: 项目经费（Resolver 查询）
+    route: expenses-function
+resources:
+  - key: main
+    path: web/main/dist
+functions:
+  - key: expenses-resolver
+    handler: index.resolver
+permissions:
+  scopes:
+    - pcp:read:user:token
+    - pcp:read:app:token
+    - pcp:read:pjm:project
+  content:
+    scripts:
+      - sha256-Z2/iFzh9VMlVkEOar1f/oSHWwQk3ve1qk/C2WdsC4Xk=
+    styles:
+      - unsafe-inline
+  external:
+    fetch:
+      backend:
+        - remote: node-remote
+      client:
+        - https://expenses-node.example.com
+remotes:
+  - key: node-remote
+    # 部署前替换为实际 Remote HTTPS 地址，并同步 fetch.client 的来源。
+    baseUrl: https://expenses-node.example.com
+    # 函数调用 Remote 时转交用户 OAuth。
+    auth:
+      userToken: true
+      appToken: false
+  - key: java-remote
+    baseUrl: https://expenses-java.example.com
+    auth:
+      userToken: true
+      appToken: false
+endpoints:
+  - key: expenses-endpoint
+    remote: node-remote
+    # 项目页调用 Remote 时转交用户 OAuth。
+    auth:
+      userToken: true
+      appToken: false
+  - key: project-events
+    remote: node-remote
+    route: /events/project
+    # 项目事件调用 Remote 时转交应用 OAuth。
+    auth:
+      userToken: false
+      appToken: true
+event:
+  triggers:
+    - key: project-updated
+      type: system
+      events:
+        - pce:pjm:project:updated
+      handler:
+        endpoint: project-events

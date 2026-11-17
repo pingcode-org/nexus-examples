@@ -1,0 +1,26 @@
+<section class="pg-section">
+  <h3 class="pg-section-title">Basic</h3>
+  <button thyButton="primary" type="button" (click)="openCreate()">创建工单</button>
+</section>
+<thy-divider class="pg-divider"></thy-divider>
+<section class="pg-section">
+  <h3 class="pg-section-title">With Default Value</h3>
+  <div class="pg-create">
+    <div class="pg-field">
+      <span>标题</span>
+      <input thyInput [value]="title()" (input)="setTitle($event)" />
+    </div>
+    <div class="pg-field">
+      <span>所属产品</span>
+      <thy-select
+        thyPlaceHolder="请选择"
+        thyClearable
+        thySearchable
+        [thyOptions]="productOptions()"
+        [ngModel]="productId()"
+        (ngModelChange)="setProductId($event)"
+      ></thy-select>
+    </div>
+    <button thyButton="primary" type="button" (click)="openCreateWithDefaults()">创建工单</button>
+  </div>
+</section>

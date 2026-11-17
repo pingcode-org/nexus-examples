@@ -1,0 +1,27 @@
+<section class="pg-section">
+  <h3 class="pg-section-title">Type</h3>
+  <div class="pg-actions">
+    <button thyButton="success" type="button" (click)="success()">Success</button>
+    <button thyButton="info" type="button" (click)="info()">Info</button>
+    <button thyButton="warning" type="button" (click)="warning()">Warning</button>
+    <button thyButton="danger" type="button" (click)="error()">Error</button>
+  </div>
+</section>
+<thy-divider class="pg-divider"></thy-divider>
+<section class="pg-section">
+  <h3 class="pg-section-title">Detail</h3>
+  <button thyButton="primary" type="button" (click)="detail()">Detail</button>
+</section>
+<thy-divider class="pg-divider"></thy-divider>
+<section class="pg-section">
+  <h3 class="pg-section-title">Actions</h3>
+  <button thyButton="primary" type="button" (click)="actions()">Actions</button>
+</section>
+<thy-divider class="pg-divider"></thy-divider>
+<section class="pg-section">
+  <h3 class="pg-section-title">Manual Close</h3>
+  <div class="pg-actions">
+    <button thyButton="primary" type="button" (click)="autoClose(true)">自动关闭</button>
+    <button thyButton="default" thyAppearance="outline" type="button" (click)="autoClose(false)">不自动关闭</button>
+  </div>
+</section>

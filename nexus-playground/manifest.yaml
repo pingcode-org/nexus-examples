@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+  publisher:
+    name: PingCode 团队
+    email: support@pingcode.com
+    phone: 400-805-1024
+    site: https://pingcode.com
+  links:
+    - title: 服务条款
+      url: https://pingcode.com/terms
+    - title: 隐私政策
+      url: https://pingcode.com/privacy
+extensions:
+  - key: nexus-playground-workspace-page
+    target: pcm:global:workspace:page
+    title: Playground
+    resource: main
+    resolver:
+      function: resolver
+    route: playground
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: main
+    path: web/main/dist
+storage:
+  entities:
+    - name: user_selection
+      attributes:
+        - name: id
+          type: string
+          required: true
+        - name: users_dialog
+          type: array
+          required: false
+        - name: users_popover
+          type: array
+          required: false
+        - name: user_popover
+          type: string
+          required: false
+permissions:
+  scopes:
+    - pcp:read:pjm:project
+    - pcp:read:ship:product
+    - pcp:read:testhub:library
+    - pcp:storage:app
+    - pcp:read:global:team
+  content:
+    styles:
+      - unsafe-inline

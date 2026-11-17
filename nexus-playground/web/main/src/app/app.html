@@ -1,0 +1,36 @@
+<thy-layout>
+  <thy-sidebar
+    thyDirection="left"
+    [thyTheme]="'light'"
+    [thyWidth]="220"
+    thyDivided="true"
+    [thyCollapsible]="false"
+  >
+    <thy-sidebar-content>
+      <thy-menu [thyVariant]="'loose'">
+        <thy-menu-group thyTitle="capabilities">
+          @for (item of items; track item.id) {
+            <a
+              thyMenuItem
+              [routerLink]="['/', group, item.id]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span thyMenuItemName>{{ item.label }}</span>
+            </a>
+          }
+        </thy-menu-group>
+      </thy-menu>
+    </thy-sidebar-content>
+  </thy-sidebar>
+
+  <thy-layout>
+    <thy-header [thyTitle]="page().label" thyDivided></thy-header>
+    <thy-content>
+      <div class="header-tips">
+        <thy-alert thyAppearance="naked" thyColor="danger" thyIcon="lightbulb" [thyMessage]="page().description"></thy-alert>
+      </div>
+      <router-outlet />
+    </thy-content>
+  </thy-layout>
+</thy-layout>

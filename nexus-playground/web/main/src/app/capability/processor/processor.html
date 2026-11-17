@@ -1,0 +1,5 @@
+<section class="pg-section">
+  <h3 class="pg-section-title">Upload</h3>
+  <input #fileInput type="file" hidden multiple (change)="upload($event)" />
+  <button thyButton="primary" type="button" (click)="fileInput.click()">选择文件</button>
+</section>
