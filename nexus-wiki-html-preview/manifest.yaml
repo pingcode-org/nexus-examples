@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-wiki-html-preview-document-block
+    target: pcm:wiki:document:block
+    title: HTML Preview
+    icon: "resource:main/icons/icon.svg"
+    resource: main
+    resolver:
+      function: resolver
+    layout: block
+    behavior: modal
+    emitReadyEvent: true
+    edit:
+      icon: "resource:main/icons/edit.svg"
+      title: HTML Preview
+      resource: edit
+      viewport:
+        size: xlarge
+      openOnInsert: true
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: main
+    path: web/main/dist
+  - key: edit
+    path: web/edit/dist
+permissions:
+  scopes: []
+  content:
+    styles:
+      - unsafe-inline
+    scripts:
+      - unsafe-inline
+

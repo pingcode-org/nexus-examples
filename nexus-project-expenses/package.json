@@ -1,0 +1,27 @@
+{
+  "name": "nexus-project-expenses",
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build-web": "cd web/main && npm run build",
+    "start-web": "cd web/main && npm run start",
+    "check": "tsc -p tsconfig.json && cd web/main && npm run check",
+    "start": "concurrently --kill-others \"npm run start-web\" \"npm run serve\"",
+    "serve": "nexus serve --environment development",
+    "deploy-only": "nexus deploy",
+    "deploy": "npm run build-web && npm run deploy-only",
+    "postinstall": "cd web/main && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.5",
+    "typescript": "~6.0.2"
+  },
+  "dependencies": {
+    "@pc-nexus/core": "^1.0.0-rc.0",
+    "@pc-nexus/manifest": "^1.0.0-rc.0",
+    "@pc-nexus/network": "^1.0.0-rc.0"
+  }
+}

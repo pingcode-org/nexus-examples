@@ -1,0 +1,35 @@
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-external-profile-personal-setting
+    target: pcm:global:personal:setting
+    resolver:
+      function: resolver
+    pages:
+      - key: github
+        title: GitHub 个人资料
+        resource: main
+        route: github
+    section:
+      header: 外部资料
+      enabled: true
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: main
+    path: web/main/dist
+permissions:
+  scopes:
+    - pcp:storage:app
+  external:
+    fetch:
+      backend:
+        - api.github.com
+    images:
+      - https://avatars.githubusercontent.com
+  content:
+    scripts:
+      - unsafe-inline
+    styles:
+      - unsafe-inline
