@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-router-app-hub
+    target: pcm:global:app:hub
+    title: Router
+    resource: main
+    resolver:
+      function: resolver
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: main
+    path: web/main/dist
+permissions:
+  scopes: []
+  external:
+    fetch:
+      client:
+        # 允许 router.navigate / router.open 打开该域时不弹出「跳转确认」
+        - developer.pingcode.com
+  content:
+    styles:
+      - unsafe-inline
