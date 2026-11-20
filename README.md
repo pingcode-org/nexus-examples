@@ -1,2 +1,24 @@
-# nexus-examples
-Nexus Examples
+# Nexus 示例应用
+
+面向 [Nexus](https://developer.pingcode.com/) 的示例应用。本仓库收集可直接在 PingCode 中部署和体验的聚焦示例。
+
+## 示例
+
+| 应用 | 路径 | 演示内容 |
+|------|------|----------|
+| **nexus-agile-quiz** | [`nexus-agile-quiz`](./nexus-agile-quiz) | [项目 - 首页导航](https://developer.pingcode.com/reference/resource/extensions/pjm-project-hub)上的敏捷开发问答（Scrum / Kanban），以及 Nexus [i18n](https://developer.pingcode.com/guide/advanced/translations) 与 [Resolver](https://developer.pingcode.com/reference/functions/core/resolver) |
+| **nexus-event-feed** | [`nexus-event-feed`](./nexus-event-feed) | [全局 - 应用中心](https://developer.pingcode.com/reference/resource/extensions/global-app-hub)上同一时间线中的生命周期、系统、定时、Webhook 与应用事件 |
+| **nexus-external-profile** | [`nexus-external-profile`](./nexus-external-profile) | [账号 - 个人设置](https://developer.pingcode.com/reference/resource/extensions/global-personal-setting)上的 GitHub 账号绑定 / 重新绑定，以及 [fetch.request](https://developer.pingcode.com/reference/functions/network/fetch) 与 [KVS](https://developer.pingcode.com/reference/functions/storage/kvs) |
+| **nexus-flow-workitem-notify** | [`nexus-flow-workitem-notify`](./nexus-flow-workitem-notify) | 使用 React Native UI 配置、工作项绑定和投递结果的工作流自定义动作 |
+| **nexus-project-expenses** | [`nexus-project-expenses`](./nexus-project-expenses) | 项目经费与独立只读函数查询页面，Node.js / Java 服务端任选其一，演示前端直连、远程解析器、项目事件、函数 Remote 调用和平台 API 回调 |
+| **nexus-workitem-live-viewer** | [`nexus-workitem-live-viewer`](./nexus-workitem-live-viewer) | [工作项 - 详情后台脚本](https://developer.pingcode.com/reference/resource/extensions/pjm-workitem-background) + [工作项 - 详情上下文](https://developer.pingcode.com/reference/resource/extensions/pjm-workitem-context) + [realtime](https://developer.pingcode.com/reference/interface/bridge/realtime)（`context` / `workitem`）实现的查看者列表 |
+| **nexus-hello-world-angular-native-ui** | [`nexus-hello-world-angular-native-ui`](./nexus-hello-world-angular-native-ui) | [项目 - 组件页面](https://developer.pingcode.com/reference/resource/extensions/pjm-project-page)上基于 Angular [Native UI](https://developer.pingcode.com/guide/development/user-interface-native-ui) 的 Hello World |
+| **nexus-hello-world-react-native-ui** | [`nexus-hello-world-react-native-ui`](./nexus-hello-world-react-native-ui) | [项目 - 组件页面](https://developer.pingcode.com/reference/resource/extensions/pjm-project-page)上基于 React [Native UI](https://developer.pingcode.com/guide/development/native-ui-with-react) 的 Hello World |
+| **nexus-router** | [`nexus-router`](./nexus-router) | 应用内多页路由（[`@pc-nexus/react/router`](https://developer.pingcode.com/guide/development/user-interface-with-route-by-react) `BrowserRouter`）与 Bridge [`router`](https://developer.pingcode.com/reference/interface/bridge/router) 用法，挂载于[全局 - 独立应用](https://developer.pingcode.com/reference/resource/extensions/global-app-hub)（React [Custom UI](https://developer.pingcode.com/guide/development/custom-ui-with-react)） |
+| **nexus-hello-world-react-custom-ui** | [`nexus-hello-world-react-custom-ui`](./nexus-hello-world-react-custom-ui) | [项目 - 组件页面](https://developer.pingcode.com/reference/resource/extensions/pjm-project-page)上基于 React [Custom UI](https://developer.pingcode.com/guide/development/custom-ui-with-react) 的 Hello World |
+| **nexus-hello-world-angular-custom-ui** | [`nexus-hello-world-angular-custom-ui`](./nexus-hello-world-angular-custom-ui) | [项目 - 组件页面](https://developer.pingcode.com/reference/resource/extensions/pjm-project-page)上基于 Angular [Custom UI](https://developer.pingcode.com/guide/development/custom-ui-with-angular) 的 Hello World |
+| **nexus-my-todos-widget** | [`nexus-my-todos-widget`](./nexus-my-todos-widget) | [工作台 - 仪表盘部件](https://developer.pingcode.com/reference/resource/extensions/global-dashboard-widget)上的我的待办，使用 [CES](https://developer.pingcode.com/reference/functions/storage/ces) 存储 |
+| **nexus-project-attachments** | [`nexus-project-attachments`](./nexus-project-attachments) | [项目 - 组件页面](https://developer.pingcode.com/reference/resource/extensions/pjm-project-page)上的项目附件（Angular Custom UI），使用 [Storage](https://developer.pingcode.com/reference/functions/storage) NOS + CES |
+| **nexus-sprint-stats** | [`nexus-sprint-stats`](./nexus-sprint-stats) | 迭代统计 — [迭代页面](https://developer.pingcode.com/reference/resource/extensions/pjm-sprint-page) + [PingCode REST API](https://developer.pingcode.com/guide/development/network-calling-apis-from-backend)（React Custom UI） |
+| **nexus-wiki-tabs** | [`nexus-wiki-tabs`](./nexus-wiki-tabs) | [页面 - 文档内容块](https://developer.pingcode.com/reference/resource/extensions/wiki-document-block)上的标签页（`layout: bodied`，React Native UI） |
+| **nexus-workitem-dod-validator** | [`nexus-workitem-dod-validator`](./nexus-workitem-dod-validator) | [工作项 - 工作流验证](https://developer.pingcode.com/reference/resource/extensions/pjm-workitem-validator) + React [Native UI](https://developer.pingcode.com/guide/development/native-ui-with-react) 实现的可配置工时 / 子任务 / 关联测试用例 DoD 校验 |

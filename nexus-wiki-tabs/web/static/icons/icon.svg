@@ -1,0 +1,12 @@
+<svg width="1em" height="1em" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+  <title>标签页</title>
+  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <rect stroke="#EEEEEE" fill="#FFFFFF" x="0.5" y="0.5" width="27" height="27" rx="4"></rect>
+    <g transform="translate(5, 5)">
+      <rect x="0" y="0" width="18" height="18" rx="2" fill="#6698FF"></rect>
+      <rect x="2" y="3" width="6" height="4" rx="1" fill="#FFFFFF" opacity="0.95"></rect>
+      <rect x="9" y="3.5" width="6" height="3.5" rx="1" fill="#FFFFFF" opacity="0.55"></rect>
+      <rect x="2" y="8" width="14" height="8" rx="1" fill="#FFFFFF" opacity="0.92"></rect>
+    </g>
+  </g>
+</svg>

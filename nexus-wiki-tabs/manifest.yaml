@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-wiki-tabs-document-block
+    target: pcm:wiki:document:block
+    title: 标签页
+    icon: "resource:static/icons/icon.svg"
+    resource: tabs-view
+    resolver:
+      function: resolver
+    behavior: modal
+    layout: bodied
+    emitReadyEvent: true
+    edit:
+      icon: "resource:static/icons/edit.svg"
+      title: 配置标签页
+      resource: tabs-edit
+      viewport:
+        size: large
+      openOnInsert: true
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: tabs-view
+    path: web/tabs-view/main.tsx
+    render: native
+  - key: tabs-edit
+    path: web/tabs-edit/main.tsx
+    render: native
+  - key: static
+    path: web/static
+permissions:
+  scopes: []
