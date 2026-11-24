@@ -1,0 +1,19 @@
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-hello-world-react-native-ui-project-page
+    resource: main
+    target: pcm:pjm:project:page
+    resolver:
+      function: resolver
+    title: Hello World
+    route: hello-world
+functions:
+  - key: resolver
+    handler: index.resolver
+permissions:
+  scopes: []
+resources:
+  - key: main
+    path: web/main/index.tsx
+    render: native

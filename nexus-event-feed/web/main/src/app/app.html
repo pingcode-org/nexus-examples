@@ -1,0 +1,147 @@
+<main class="feed">
+  @let currentFeed = feed();
+  <section aria-labelledby="timeline-title">
+    <header class="timeline-header">
+      <h1 id="timeline-title" class="section-title">时间线</h1>
+      <div class="auto-refresh">
+        自动刷新
+        <thy-switch thySize="sm" [ngModel]="autoRefresh()" (ngModelChange)="setAutoRefresh($event)" />
+      </div>
+    </header>
+
+    <thy-alert
+      class="feed-intro"
+      thyColor="danger"
+      thyAppearance="naked"
+      thyIcon="lightbulb"
+      [thyMessage]="introLines.join(' ')"
+    />
+
+    @if (feedResource.error()) {
+      <p class="text-danger">页面暂时读不出来。</p>
+    } @else if (currentFeed) {
+      <p class="timeline-count text-secondary text-nowrap">{{ currentFeed.timeline.length }}<span class="text-muted ml-1">个时间线</span></p>
+      <thy-table
+        [thyModel]="currentFeed.timeline"
+        [thyLoadingDone]="true"
+        [thyLayoutFixed]="true"
+        thyClassName="table-hover"
+        thyMinWidth="860px"
+        thyTheme="default"
+        thySize="md"
+        thyRowKey="id"
+        (thyOnRowClick)="openEventDetail($event.row, eventDetail)"
+      >
+        <thy-table-column thyTitle="动态" thyWidth="38%">
+          <ng-template let-row>
+            <button type="button" class="event-row-trigger" aria-haspopup="dialog"
+              (click)="$event.stopPropagation(); openEventDetail(row, eventDetail)">
+              <span thyFlexibleText [thyTooltipContent]="row.text">{{ row.text }}</span>
+            </button>
+          </ng-template>
+        </thy-table-column>
+        <thy-table-column thyTitle="来源" thyWidth="12%">
+          <ng-template let-row>
+            <span class="text-nowrap">{{ sourceText(row) }}</span>
+          </ng-template>
+        </thy-table-column>
+        <thy-table-column thyTitle="事件名" thyWidth="20%">
+          <ng-template let-activity>
+            @if (eventName(activity); as name) {
+              <span thyFlexibleText [thyTooltipContent]="name">{{ name }}</span>
+            }
+          </ng-template>
+        </thy-table-column>
+        <thy-table-column thyTitle="时间" thyWidth="18%">
+          <ng-template let-row>
+            <span class="text-nowrap">{{ row.occurredAt | date: "MM-dd HH:mm:ss" }}</span>
+          </ng-template>
+        </thy-table-column>
+        <thy-table-column thyTitle="状态" thyWidth="12%">
+          <ng-template let-row>
+            <span class="text-nowrap">{{ statusText(row) }}</span>
+          </ng-template>
+        </thy-table-column>
+        <ng-template #empty>
+          <thy-empty thyMessage="还没有动态" thySize="sm" />
+        </ng-template>
+      </thy-table>
+    } @else {
+      <p class="text-muted">读取中</p>
+    }
+  </section>
+
+  @if (!feedResource.error() && currentFeed) {
+    <section class="feed-url" aria-label="Webhook 调用地址">
+      <label for="webhook-url" class="section-title">Webhook 调用地址</label>
+      <thy-input-group thySize="lg">
+        <input thyInput id="webhook-url" readonly disabled [value]="currentFeed.webhookUrl" />
+        <ng-template #suffix>
+          <button thyButton="default" thyAppearance="link" type="button" class="webhook-copy" (click)="copyCurl(currentFeed.webhookUrl)">
+            <thy-icon thyName="copy" aria-hidden="true" />
+            复制调用
+          </button>
+        </ng-template>
+      </thy-input-group>
+    </section>
+  }
+</main>
+
+<ng-template #eventDetail let-detail>
+  @let activity = detail.activity;
+  <thy-dialog-header thyTitle="事件详情" />
+  <thy-dialog-body>
+    <dl class="event-overview">
+      <div class="event-overview-summary">
+        <dt>动态</dt>
+        <dd>{{ activity.text }}</dd>
+      </div>
+      <div>
+        <dt>来源</dt>
+        <dd>{{ sourceText(activity) }}</dd>
+      </div>
+      <div>
+        <dt>事件名</dt>
+        <dd>{{ eventName(activity) || "—" }}</dd>
+      </div>
+      <div>
+        <dt>时间</dt>
+        <dd>{{ activity.occurredAt | date: "yyyy年M月d日 HH:mm:ss" }}</dd>
+      </div>
+      <div>
+        <dt>状态</dt>
+        <dd>
+          <thy-tag thyAppearance="fill" thyShape="ellipse"
+            [thyColor]="activity.summaryStatus === 'pending' ? 'default' : 'success'">
+            {{ statusText(activity) }}
+          </thy-tag>
+        </dd>
+      </div>
+    </dl>
+
+    <h4 class="event-detail-label">详情</h4>
+    <div class="event-detail-panel">
+      @if (detail.fields.length) {
+        <dl class="event-detail-fields">
+          @for (field of detail.fields; track field.key) {
+            <div>
+              <dt>{{ field.label }}</dt>
+              <dd>
+                @if (field.key === "title" && (activity.detail["identifier"] || activity.detail["workItemId"])) {
+                  <button thyButton="primary" thyAppearance="link" type="button" class="detail-link p-0"
+                    (click)="openWorkItem(activity)">
+                    {{ field.value }}
+                  </button>
+                } @else {
+                  {{ field.value || "—" }}
+                }
+              </dd>
+            </div>
+          }
+        </dl>
+      } @else {
+        <p class="m-0 text-muted">暂无详情</p>
+      }
+    </div>
+  </thy-dialog-body>
+</ng-template>
