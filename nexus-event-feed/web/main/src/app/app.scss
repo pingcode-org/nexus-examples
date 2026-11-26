@@ -1,0 +1,153 @@
+.feed {
+  padding: 24px 20px 48px;
+  color: var(--text-color);
+}
+
+.section-title {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.auto-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-inline-start: auto;
+  color: var(--gray-700);
+  font-size: 13px;
+}
+
+.feed-intro {
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.feed-url {
+  display: grid;
+  gap: 12px;
+  margin-top: 29px;
+}
+
+#webhook-url {
+  min-width: 0;
+  color: var(--gray-600, #999);
+}
+
+.webhook-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+  padding: 0 0 0 16px;
+  border-radius: 0;
+  border-left: 1px solid var(--gray-300);
+  color: var(--text-color);
+  white-space: nowrap;
+
+  thy-icon {
+    color: var(--gray-600);
+  }
+
+  &:hover thy-icon {
+    color: inherit;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+.timeline-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.timeline-count {
+  margin: 0 0 8px;
+}
+
+.event-row-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible > span {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.event-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 12px 16px;
+  margin: 0 0 16px;
+}
+
+.event-overview-summary {
+  grid-column: 1 / -1;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.event-overview dt,
+.event-detail-label {
+  margin: 0 0 8px;
+  color: var(--gray-700);
+  font: inherit;
+}
+
+.event-overview dd,
+.event-detail-fields dd {
+  margin: 0;
+}
+
+.event-detail-panel {
+  padding: 20px;
+  border: 1px solid var(--gray-200);
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+.event-detail-fields {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+
+  > div {
+    display: grid;
+    grid-template-columns: 6em minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  dt {
+    color: var(--gray-700);
+    font-weight: inherit;
+  }
+}
+
+.detail-link {
+  max-width: 100%;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

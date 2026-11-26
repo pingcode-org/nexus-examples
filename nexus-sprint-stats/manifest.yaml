@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+extensions:
+  - key: sprint-stats-page
+    target: pcm:pjm:sprint:page
+    title: 迭代统计
+    resource: main
+    resolver:
+      function: resolver
+    route: sprint-stats
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: main
+    path: web/main/dist
+permissions:
+  scopes:
+    - pcp:read:pjm:workitem
+    - pcp:read:pjm:sprint
+  content:
+    styles:
+      - unsafe-inline
+

@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+extensions:
+  - key: activity-registration
+    resource: main
+    target: pcm:global:app:hub
+    resolver:
+      function: resolver
+    title: 活动报名表
+functions:
+  - key: resolver
+    handler: index.resolver
+  - key: registration-api
+    handler: index.registrationHandler
+exposer:
+  scopes:
+    - name: ncp:read:registration
+      displayName: Read Activity Registrations
+      description: Read activity registration records
+    - name: ncp:write:registration
+      displayName: Write Activity Registrations
+      description: Create, update, or delete activity registration records
+  routes:
+    - key: list-registrations
+      path: /registrations
+      method: GET
+      accept:
+        - application/json
+      scopes:
+        - ncp:read:registration
+      handler:
+        function: registration-api
+    - key: create-registration
+      path: /registrations
+      method: POST
+      accept:
+        - application/json
+      scopes:
+        - ncp:write:registration
+      handler:
+        function: registration-api
+    - key: update-registration
+      path: /registrations
+      method: PUT
+      accept:
+        - application/json
+      scopes:
+        - ncp:write:registration
+      handler:
+        function: registration-api
+    - key: delete-registration
+      path: /registrations
+      method: DELETE
+      accept:
+        - application/json
+      scopes:
+        - ncp:write:registration
+      handler:
+        function: registration-api
+resources:
+  - key: main
+    path: web/main/index.ts
+    render: native
+storage:
+  entities:
+    - name: registrations
+      attributes:
+        - name: id
+          type: string
+          required: true
+        - name: team
+          type: string
+          required: true
+        - name: name
+          type: string
+          required: true
+        - name: employee_no
+          type: string
+          required: true
+        - name: department
+          type: string
+          required: true
+        - name: contact
+          type: string
+          required: false
+        - name: note
+          type: string
+          required: false
+        - name: created_at
+          type: number
+          required: true
+        - name: updated_at
+          type: number
+          required: true
+      indexes:
+        - name: by_team_time
+          keys:
+            - team: 1
+            - created_at: -1
+permissions:
+  scopes:
+    - pcp:storage:app

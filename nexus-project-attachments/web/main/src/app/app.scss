@@ -1,0 +1,27 @@
+.attachment-toolbar,
+.attachment-search {
+  display: flex;
+  align-items: center;
+}
+
+.attachment-toolbar {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+.attachment-search {
+  flex: 0 1 auto;
+  min-width: min(240px, 100%);
+  max-width: 100%;
+  gap: 8px;
+}
+
+.search-input {
+  width: 300px;
+  min-width: 0;
+}
+
+.upload-button {
+  margin-inline-start: auto;
+}
