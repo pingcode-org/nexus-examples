@@ -1,0 +1,18 @@
+<div class="layout layout-has-sidebar">
+  <aside class="layout-sidebar sidebar-theme-light">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">链接</div>
+      <nav class="sidebar-menu" aria-label="应用内导航">
+        <a class="menu-item" routerLink="/recent" routerLinkActive="menu-item-active">
+          <span class="menu-item-name">最近访问</span>
+        </a>
+        <a class="menu-item" routerLink="/links" routerLinkActive="menu-item-active">
+          <span class="menu-item-name">全部链接</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+  <main class="layout-content">
+    <router-outlet />
+  </main>
+</div>
