@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-agile-quiz-project-hub
+    target: pcm:pjm:project:hub
+    resolver:
+      function: resolver
+    pages:
+      - key: agile-quiz
+        title:
+          i18n: app.title
+        resource: main
+        route: agile-quiz
+        icon: "resource:main/assets/icon.svg"
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: main
+    path: web/main/dist
+translations:
+  resources:
+    - key: en-US
+      path: locales/en-US.json
+    - key: zh-CN
+      path: locales/zh-CN.json
+  fallback:
+    default: zh-CN
+permissions:
+  scopes: []
+  content:
+    styles:
+      - unsafe-inline
