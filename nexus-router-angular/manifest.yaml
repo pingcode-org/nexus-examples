@@ -1,0 +1,19 @@
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-router-angular-app-hub
+    target: pcm:global:app:hub
+    title: Router
+    resource: main
+resources:
+  - key: main
+    path: web/main/dist
+permissions:
+  scopes: []
+  external:
+    fetch:
+      client:
+        - developer.pingcode.com
+  content:
+    styles:
+      - unsafe-inline

@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=node_modules/@pc-nexus/manifest/schema/manifest.schema.json
+app:
+  version: 1.0.0
+extensions:
+  - key: nexus-workitem-live-viewer-background
+    target: pcm:pjm:workitem:background
+    resource: main
+    resolver:
+      function: resolver
+  - key: nexus-workitem-live-viewer-context
+    target: pcm:pjm:workitem:context
+    title: Live Viewer
+    resource: main
+    resolver:
+      function: resolver
+functions:
+  - key: resolver
+    handler: index.resolver
+resources:
+  - key: main
+    path: web/main/dist
+permissions:
+  scopes:
+    - pcp:read:global:team
+  external:
+    images:
+      - "*"
+  content:
+    styles:
+      - unsafe-inline

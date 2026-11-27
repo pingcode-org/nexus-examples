@@ -1,0 +1,21 @@
+html,
+body,
+app-root {
+  margin: 0;
+  height: 100%;
+  color: var(--text-color);
+}
+
+app-root {
+  display: block;
+}
+
+.attachment-toolbar thy-input-search.search-input .input-search-control {
+  height: 34px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
