@@ -1,0 +1,19 @@
+<nx-layout>
+  <nx-content class="p-5">
+    @if (error()) {
+      <nx-text class="mb-3 text-danger">{{ error() }}</nx-text>
+    }
+
+    <nx-box class="mb-3 flex align-items-center justify-content-between">
+      <nx-box class="w-25">
+        <nx-input placeholder="搜索" [(value)]="search"></nx-input>
+      </nx-box>
+      <nx-box class="flex align-items-center">
+        <nx-text>{{ filteredRegistrations().length }}</nx-text>
+        <nx-text class="text-secondary ml-1">个人员</nx-text>
+      </nx-box>
+    </nx-box>
+
+    <nx-dynamic-table [head]="head" [rows]="rows()" [loading]="loading()" />
+  </nx-content>
+</nx-layout>

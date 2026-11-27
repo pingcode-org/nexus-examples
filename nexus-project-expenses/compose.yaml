@@ -1,0 +1,24 @@
+name: nexus-project-expenses
+
+services:
+  remote-nodejs:
+    build: ./remote-server-nodejs
+    env_file:
+      - path: ./remote-server-nodejs/.env
+        required: false
+    environment:
+      LISTEN_HOST: 0.0.0.0
+      PORT: "3200"
+    ports:
+      - "127.0.0.1:3201:3200"
+
+  remote-java:
+    build: ./remote-server-java
+    env_file:
+      - path: ./remote-server-java/.env
+        required: false
+    environment:
+      LISTEN_HOST: 0.0.0.0
+      PORT: "3200"
+    ports:
+      - "127.0.0.1:3202:3200"

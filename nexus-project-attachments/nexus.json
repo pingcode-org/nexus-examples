@@ -1,0 +1,12 @@
+{
+  "serve": {
+    "resources": {
+      "main": {
+        "port": 3100
+      },
+      "background": {
+        "port": 3101
+      }
+    }
+  }
+}
